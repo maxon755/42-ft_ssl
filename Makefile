@@ -33,7 +33,7 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
-	
+
 clean:
 	make -C $(LFT_DIR) clean
 	rm -rf $(OBJ)
@@ -44,3 +44,8 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+clear:
+	rm -rf $(NAME)
+
+build: clear all

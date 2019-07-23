@@ -1,7 +1,8 @@
-# Prerequisites
-*.d
 .*
 !.gitignore
 
 # Object files
 *.o
+
+# executable
+ft_ssl
