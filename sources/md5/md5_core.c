@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   md5_core.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/31 14:26:44 by maks              #+#    #+#             */
-/*   Updated: 2019/07/31 14:29:04 by maks             ###   ########.fr       */
+/*   Created: 2019/07/31 14:24:30 by maks              #+#    #+#             */
+/*   Updated: 2019/07/31 18:18:20 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "ft_md5.h"
 
-# include "ft_md5.h"
+unsigned int get_padding_size(unsigned int bit_length)
+{
+	int delta;
+	
+	delta = (448 - bit_length) % 512;
+	if (delta <= 0) {
+		delta += 512;
+	}
+	return (bit_length + delta);
+}
 
-#endif
+void prepare_message(t_md5_message *message)
+{
+	message->padding_length_bit = get_padding_size(message->init_length_bit);
+}

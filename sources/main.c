@@ -1,8 +1,13 @@
 #include <unistd.h>
+#include "ft_ssl.h"
 
-int main(void)
+int main(int argc, char * const *argv)
 {
-    write(1, "main works", 10);
+	int res;
 
-    return 0;
+	res = md5(argc, argv);
+	if (res != 0) {
+		ft_printf("Something going wrong\n");
+	}
+	return 0;
 }
