@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:24:30 by maks              #+#    #+#             */
-/*   Updated: 2019/07/31 18:18:20 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/01 17:04:50 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ unsigned int get_padding_size(unsigned int bit_length)
 	}
 	return (bit_length + delta);
 }
+
 
 void prepare_message(t_md5_message *message)
 {
