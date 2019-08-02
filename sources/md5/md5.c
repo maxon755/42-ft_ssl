@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   md5.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
+/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/07/31 18:06:57 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/02 15:17:50 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 t_md5_flags md5_flags;
 
-t_md5_message *initilize_message(char * str)
+t_md5_message	*initilize_message(char * str)
 {
 	t_md5_message *message;
 
-	message = (t_md5_message *)malloc(sizeof(message));
-	ft_bzero(message, sizeof(message));
-
+	message = (t_md5_message *)malloc(sizeof(t_md5_message));
+	ft_bzero(message, sizeof(t_md5_message));
 	message->init_str = str;
 	message->init_length = ft_strlen(str);
 	message->init_length_bit = message->init_length * CHAR_BIT;
-
 	return (message);
 }
 
-int md5(int argc, char * const *argv)
+int				md5(int argc, char * const *argv)
 {
 	t_md5_message *message;
 
