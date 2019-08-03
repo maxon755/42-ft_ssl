@@ -27,7 +27,7 @@ LFT := $(LFT_DIR)/libft.a
 
 .PHONY = all clean fclean re
 
-all:  prepare_dirs build_lib $(NAME)
+all: prepare_dirs build_lib $(NAME)
 
 $(NAME): $(LFT) $(OBJ)
 	$(CC) $(FLAGS) $(LFT) $^ -o $(NAME)
