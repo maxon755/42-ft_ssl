@@ -16,6 +16,7 @@
 # include "libft.h"
 
 # define BYTES_FOR_SIZE 8
+# define MD5_BLOCK_SIZE 16
 # define ROL32(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 
 # define S11 7
@@ -87,7 +88,7 @@ int 				md5(int argc, char * const *argv);
 
 void 				parse_flags(int argc, char * const *argv);
 void 				prepare_message(t_md5_message *message);
-unsigned char 		*hash_message(uint32_t *message, uint64_t message_length);
+unsigned char 		*hash_message(unsigned char *message, uint64_t message_length);
 void				compute_hash(t_md5_data *data);
 
 #endif

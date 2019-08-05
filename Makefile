@@ -12,7 +12,7 @@ LFT_DIR := ./libft
 INC_DIR := ./includes $(LFT_DIR)/includes
 DEP_DIR := ./deps
 MD5_DIR := $(SRC_DIR)/md5
-SRC_DIR := $(SRC_DIR) $(MD5_DIR) 
+SRC_DIR := $(SRC_DIR) $(MD5_DIR)
 
 # Object files
 SEARCH_WILCARDS := $(addsuffix /*.c,$(SRC_DIR))
@@ -30,7 +30,7 @@ LFT := $(LFT_DIR)/libft.a
 all: prepare_dirs build_lib $(NAME)
 
 $(NAME): $(LFT) $(OBJ)
-	$(CC) $(FLAGS) $(LFT) $^ -o $(NAME)
+	$(CC) $(FLAGS) $^ -o $(NAME) $(LFT)
 
 prepare_dirs:
 	@mkdir -p $(OBJ_DIR)
@@ -52,10 +52,10 @@ clean:
 	rm -rf $(DEP_DIR)
 
 fclean: clean
-	rm -rf $(LFT)
-	rm -rf $(NAME)
+	rm -f $(LFT)
+	rm -f $(NAME)
 
 re: fclean all
 
 clear:
-	rm -rf $(NAME)
+	rm -f $(NAME)

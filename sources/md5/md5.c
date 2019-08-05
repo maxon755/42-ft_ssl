@@ -42,8 +42,9 @@ int				md5(int argc, char * const *argv)
 	message = initilize_message(argv[optind]);
 	prepare_message(message);
 
+	ft_putendl("Prepared string dump:");
 	ft_memdump(message->prepared, message->result_length);
-	message->hash = hash_message((uint32_t *)message->prepared, message->result_length);
+	message->hash = hash_message(message->prepared, message->result_length);
 
 	return 0;
 }
