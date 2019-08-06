@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/03 19:32:08 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/06 19:42:31 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "libft.h"
 
 # define BYTES_FOR_SIZE 8
-# define MD5_BLOCK_SIZE 16
+# define MD5_BLOCK_SIZE 64
+# define MD5_HASH_SIZE 16
 # define ROL32(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 
 # define S11 7
@@ -69,26 +70,18 @@ typedef struct		s_md5_message
 	unsigned char	*hash;
 }					t_md5_message;
 
-typedef struct		s_md5_buffer
-{
-	uint32_t		a;
-	uint32_t		b;
-	uint32_t		c;
-	uint32_t		d;
-}					t_md5_buffer;
-
 typedef struct		s_md5_data
 {
-	uint32_t		*x;
-	t_md5_buffer	*init_buffer;
-	t_md5_buffer	*buffer;
+	uint32_t		x[16];
+	uint32_t		*init_buffer;
+	uint32_t		buffer[4];
 }					t_md5_data;
 
 int 				md5(int argc, char * const *argv);
 
 void 				parse_flags(int argc, char * const *argv);
 void 				prepare_message(t_md5_message *message);
-unsigned char 		*hash_message(unsigned char *message, uint64_t message_length);
+uint32_t 			*hash_message(unsigned char *message, uint64_t message_length);
 void				compute_hash(t_md5_data *data);
 
 #endif

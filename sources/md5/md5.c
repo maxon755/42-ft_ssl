@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/03 19:32:29 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/06 19:24:20 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				md5(int argc, char * const *argv)
 
 	ft_putendl("Prepared string dump:");
 	ft_memdump(message->prepared, message->result_length);
-	message->hash = hash_message(message->prepared, message->result_length);
+	hash_message(message->prepared, message->result_length);
 
 	return 0;
 }
