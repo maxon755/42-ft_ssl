@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/06 19:24:20 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/07 15:48:52 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,9 @@
 
 t_md5_flags md5_flags;
 
-t_md5_message	*initilize_message(char * str)
-{
-	t_md5_message *message;
-
-	message = (t_md5_message *)malloc(sizeof(t_md5_message));
-	ft_bzero(message, sizeof(t_md5_message));
-	message->init_str = str;
-	message->init_length = ft_strlen(str);
-	message->init_length_bit = message->init_length * CHAR_BIT;
-	return (message);
-}
-
 int				md5(int argc, char * const *argv)
 {
-	t_md5_message *message;
+	int i;
 
 	parse_flags(argc, argv);
 
@@ -36,15 +24,20 @@ int				md5(int argc, char * const *argv)
 		return (1);
 	}
 
-	ft_printf("arguments end at: %u\n", optind);
-	ft_put_strarr(&argv[optind]);
+	if (md5_flags.s)
+	{
+		hash_string(md5_flags.s_arg);
+	}
 
-	message = initilize_message(argv[optind]);
-	prepare_message(message);
+	i = optind;
+	while (i < argc)
+	{
+		ft_putendl(argv[i++]);
+	}
 
-	ft_putendl("Prepared string dump:");
-	ft_memdump(message->prepared, message->result_length);
-	hash_message(message->prepared, message->result_length);
+	// ft_putendl("Prepared string dump:");
+	// ft_memdump(message->prepared, message->result_length);
+	// hash_message(message->prepared, message->result_length);
 
 	return 0;
 }

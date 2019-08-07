@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/06 19:42:31 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/07 15:58:35 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int 				md5(int argc, char * const *argv);
 
 void 				parse_flags(int argc, char * const *argv);
 void 				prepare_message(t_md5_message *message);
+uint32_t			*hash_string(char * const str);
 uint32_t 			*hash_message(unsigned char *message, uint64_t message_length);
 void				compute_hash(t_md5_data *data);
 
