@@ -6,50 +6,72 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:24:30 by maks              #+#    #+#             */
-/*   Updated: 2019/08/07 16:06:40 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/08 15:28:24 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_md5.h"
 
-static t_md5_data *init_data(void)
+
+int		hash_file(char *file_name)
 {
-	t_md5_data *data;
+	int fd;
+	struct stat path_stat;
 
-	data = (t_md5_data *)malloc(sizeof(t_md5_data));
-	data->init_buffer = (uint32_t *)malloc(MD5_HASH_SIZE);
-	ft_bzero(data->x, sizeof(data->x));
-	ft_bzero(data->init_buffer, MD5_HASH_SIZE);
-	ft_bzero(data->buffer, MD5_HASH_SIZE);
-	data->init_buffer[0] = 0x67452301;
-	data->init_buffer[1] = 0xEFCDAB89;
-	data->init_buffer[2] = 0x98BADCFE;
-	data->init_buffer[3] = 0x10325476;
+	fd = open(file_name, O_RDONLY);
 
-	return data;
+	if (fd < 0)
+	{
+		perror("ft_md5");
+	}
+	stat(file_name, &path_stat);
+	if (S_ISDIR(path_stat.st_mode))
+	{
+		ft_printf("ft_md5: %s: Is a directory\n", file_name);
+	}
+
+	hash_stream(fd);
+	close(fd);
+	return 1;
 }
 
-t_md5_message	*init_message(char * str)
+static t_md5_message	*init_chunk_message(uint32_t *chunk, ssize_t chunk_size, size_t file_size)
 {
 	t_md5_message *message;
 
 	message = (t_md5_message *)malloc(sizeof(t_md5_message));
 	ft_bzero(message, sizeof(t_md5_message));
-	message->init_str = str;
-	message->init_length = ft_strlen(str);
-	message->init_length_bit = message->init_length * CHAR_BIT;
+	message->source = (char *)malloc(chunk_size);
+	ft_memcpy(message->source, chunk, chunk_size);
+	message->source_size = file_size + chunk_size;
+	message->chunk_size = chunk_size;
 	return (message);
 }
 
-uint32_t		*hash_string(char * const str)
+static void			prepare_chunk_message(t_md5_message *message)
+{
+	uint64_t bit_length;
+
+	bit_length = message->source_size * CHAR_BIT;
+	message->padding_length = get_padding_size(message->chunk_size) + BYTES_FOR_SIZE;
+	message->result_length = message->chunk_size + message->padding_length;
+	message->prepared = (unsigned char *)malloc(message->result_length);
+	ft_bzero(message->prepared, message->result_length);
+	ft_memcpy(message->prepared, message->source, message->chunk_size);
+	message->prepared[message->chunk_size] = 0x80;
+	ft_memcpy(&message->prepared[message->result_length - BYTES_FOR_SIZE],
+				&(bit_length), BYTES_FOR_SIZE);
+}
+
+static void handle_file_chunk(t_md5_data *data, size_t file_size, size_t chunk_size)
 {
 	size_t			i;
-	t_md5_message	*message;
-	t_md5_data 		*data;
+	t_md5_message *message;
 
-	message = init_message(str);
-	prepare_message(message);
-	data = init_data();
+	message = init_chunk_message(data->x, chunk_size, file_size);
+	prepare_chunk_message(message);
+	ft_putendl("Prepared string dump:");
+	ft_memdump(message->prepared, message->result_length);
 
 	i = 0;
 	while (i < message->result_length / MD5_BLOCK_SIZE)
@@ -58,30 +80,26 @@ uint32_t		*hash_string(char * const str)
 		compute_hash(data);
 		i++;
 	}
-
-	ft_putendl("Result dump:");
-	ft_memdump(data->init_buffer, MD5_HASH_SIZE);
-
-	return data->init_buffer;
 }
 
-uint32_t		*hash_message(unsigned char *message, uint64_t message_length)
+uint32_t		*hash_stream(int fd __unused)
 {
-	size_t			i;
+	ssize_t			readed;
+	size_t			file_size;
 	t_md5_data 		*data;
 
 	data = init_data();
 
-	i = 0;
-	while (i < message_length / MD5_BLOCK_SIZE)
+	file_size = 0;
+	while ((readed = read(fd, data->x, MD5_BLOCK_SIZE)) == MD5_BLOCK_SIZE)
 	{
-		ft_memcpy(data->x, &(message[i * MD5_BLOCK_SIZE]), MD5_BLOCK_SIZE);
+		file_size += readed;
 		compute_hash(data);
-		i++;
 	}
+	handle_file_chunk(data, file_size, readed);
 
 	ft_putendl("Result dump:");
-	ft_memdump(data->init_buffer, MD5_HASH_SIZE);
+	ft_memdump(data->hash_buffer, MD5_HASH_SIZE);
 
-	return data->init_buffer;
+	return data->hash_buffer;
 }

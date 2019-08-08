@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 16:43:03 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/07 16:02:04 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/07 16:23:52 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ static void round4(uint32_t *b, uint32_t *x)
 
 void compute_hash(t_md5_data *data)
 {
-	ft_memcpy(data->buffer, data->init_buffer, MD5_HASH_SIZE);
+	ft_memcpy(data->buffer, data->hash_buffer, MD5_HASH_SIZE);
     round1(data->buffer, data->x);
     round2(data->buffer, data->x);
     round3(data->buffer, data->x);
     round4(data->buffer, data->x);
-    data->init_buffer[0] += data->buffer[0];
-    data->init_buffer[1] += data->buffer[1];
-    data->init_buffer[2] += data->buffer[2];
-    data->init_buffer[3] += data->buffer[3];
+    data->hash_buffer[0] += data->buffer[0];
+    data->hash_buffer[1] += data->buffer[1];
+    data->hash_buffer[2] += data->buffer[2];
+    data->hash_buffer[3] += data->buffer[3];
 }

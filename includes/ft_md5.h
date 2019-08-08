@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/07 15:58:35 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/08 15:20:05 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define FT_MD5_H
 
 # include "libft.h"
+# include <fcntl.h>
+# include <errno.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 # define BYTES_FOR_SIZE 8
 # define MD5_BLOCK_SIZE 64
@@ -61,28 +65,30 @@ extern t_md5_flags md5_flags;
 
 typedef struct		s_md5_message
 {
-	char 			*init_str;
+	char 			*source;
 	uint64_t		init_length;
-	uint64_t		init_length_bit;
+	uint64_t		source_size;
+	uint64_t		chunk_size;
 	unsigned int	padding_length;
 	unsigned char	*prepared;
 	uint64_t		result_length;
-	unsigned char	*hash;
 }					t_md5_message;
 
 typedef struct		s_md5_data
 {
 	uint32_t		x[16];
-	uint32_t		*init_buffer;
+	uint32_t		*hash_buffer;
 	uint32_t		buffer[4];
 }					t_md5_data;
 
 int 				md5(int argc, char * const *argv);
 
 void 				parse_flags(int argc, char * const *argv);
-void 				prepare_message(t_md5_message *message);
+t_md5_data			*init_data(void);
 uint32_t			*hash_string(char * const str);
-uint32_t 			*hash_message(unsigned char *message, uint64_t message_length);
+int 				hash_file(char *filename);
+uint32_t			*hash_stream(int fd);
 void				compute_hash(t_md5_data *data);
+unsigned int		get_padding_size(uint64_t length);
 
 #endif
