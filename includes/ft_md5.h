@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/08 15:20:05 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/08 18:55:05 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ int 				md5(int argc, char * const *argv);
 
 void 				parse_flags(int argc, char * const *argv);
 t_md5_data			*init_data(void);
-uint32_t			*hash_string(char * const str);
-int 				hash_file(char *filename);
-uint32_t			*hash_stream(int fd);
+t_md5_message		*init_string_message(char * str);
+void				hash_string(char * const str);
+void 				hash_file(char *filename);
+void				hash_input_stream(void);
 void				compute_hash(t_md5_data *data);
 unsigned int		get_padding_size(uint64_t length);
 

@@ -6,12 +6,16 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 16:55:18 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/08 14:45:11 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/08 17:01:10 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_md5.h"
 
+unsigned int	get_padding_size(uint64_t length)
+{
+	return (length < 56 ? 56 - length : 120 - length);
+}
 
 t_md5_data *init_data(void)
 {

@@ -6,16 +6,11 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 15:12:09 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/08 15:23:53 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/08 18:55:08 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_md5.h"
-
-unsigned int	get_padding_size(uint64_t length)
-{
-	return (length < 56 ? 56 - length : 120 - length);
-}
 
 static void			prepare_message(t_md5_message *message)
 {
@@ -32,7 +27,7 @@ static void			prepare_message(t_md5_message *message)
 				&(bit_length), BYTES_FOR_SIZE);
 }
 
-static t_md5_message	*init_string_message(char * str)
+t_md5_message	*init_string_message(char * str)
 {
 	t_md5_message *message;
 
@@ -43,7 +38,7 @@ static t_md5_message	*init_string_message(char * str)
 	return (message);
 }
 
-uint32_t		*hash_string(char *const str)
+void	hash_string(char *const str)
 {
 	size_t			i;
 	t_md5_message	*message;
@@ -63,6 +58,4 @@ uint32_t		*hash_string(char *const str)
 
 	ft_putendl("Result dump:");
 	ft_memdump(data->hash_buffer, MD5_HASH_SIZE);
-
-	return data->hash_buffer;
 }

@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/07 19:47:00 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/08 18:40:36 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int				md5(int argc, char * const *argv)
 	if (md5_flags.s)
 	{
 		hash_string(md5_flags.s_arg);
+	}
+
+	if (md5_flags.p)
+	{
+		hash_input_stream();
 	}
 
 	i = optind;
