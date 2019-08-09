@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/09 18:55:57 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/09 21:47:11 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # define MD5_BYTES_FOR_SIZE 8
 # define MD5_BLOCK_SIZE 64
+# define MD5_FILE_BUFFER MD5_BLOCK_SIZE * 16
 # define MD5_DIGEST_SIZE 16
 
 # define ROL32(x, n) (((x) << (n)) | ((x) >> (32 - (n))))

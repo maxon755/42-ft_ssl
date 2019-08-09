@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 17:05:34 by maks              #+#    #+#             */
-/*   Updated: 2019/08/09 19:24:20 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/09 21:43:59 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void md5_update(t_md5_context *context, unsigned char *input, unsigned int input
 		i = rest_size;
 		while(i + MD5_BLOCK_SIZE -1 < input_size)
 		{
-			md5_transform(context->state, &input[i * MD5_BLOCK_SIZE]);
+			md5_transform(context->state, &input[i]);
 			i += MD5_BLOCK_SIZE;
 		}
 		index = 0;
