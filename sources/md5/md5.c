@@ -3,16 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   md5.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/08 18:40:36 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/09 20:08:29 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_md5.h"
 
 t_md5_flags md5_flags;
+
+void md5_hash_string(char *string)
+{
+	t_md5_context context;
+	unsigned char digest[MD5_DIGEST_SIZE];
+	size_t length;
+
+	length = ft_strlen(string);
+	md5_init(&context);
+	md5_update(&context, (unsigned char *)string, length);
+	md5_finish(digest, &context);
+	md5_print(digest);
+}
+
+void md5_hash_file(char *file_name)
+{
+
+}
 
 int				md5(int argc, char * const *argv)
 {
@@ -25,7 +43,6 @@ int				md5(int argc, char * const *argv)
 		if (flag == 'p')
 		{
 			md5_flags.p = 1;
-			hash_input_stream();
 		}
 		else if (flag == 'q')
 			md5_flags.q = 1;
@@ -34,7 +51,7 @@ int				md5(int argc, char * const *argv)
 		else if (flag == 's')
 		{
 			md5_flags.s = 1;
-			hash_string(optarg);
+			md5_hash_string(optarg);
 		}
 		else if (flag == '?')
 			return (1);
@@ -44,14 +61,12 @@ int				md5(int argc, char * const *argv)
 	if (!i && !argv[optind])
 	{
 		ft_putendl("Ready to read from stdin");
-		hash_input_stream();
 	}
 
 	i = optind;
 	while (i < argc)
 	{
 		ft_putendl(argv[i]);
-		hash_file(argv[i++]);
 	}
 
 	return 0;

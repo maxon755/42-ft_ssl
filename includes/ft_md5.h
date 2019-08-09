@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/09 18:29:23 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/09 18:55:57 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define MD5_BYTES_FOR_SIZE 8
 # define MD5_BLOCK_SIZE 64
-# define MD5_HASH_SIZE 16
+# define MD5_DIGEST_SIZE 16
 
 # define ROL32(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 
@@ -53,12 +53,6 @@
 # define HH(a, b, c, d, x, s, k) a += H(b, c, d) + (x) + (k), a = ROL32(a, s) + (b)
 # define II(a, b, c, d, x, s, k) a += I(b, c, d) + (x) + (k), a = ROL32(a, s) + (b)
 
-static unsigned char MD5_PADDING[64] = {
-  0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-};
-
 typedef struct		s_md5_flags
 {
 	unsigned char	p:1;
@@ -77,6 +71,9 @@ typedef struct		s_md5_context
 }					t_md5_context;
 
 int 				md5(int argc, char * const *argv);
-
-
+void				md5_init(t_md5_context *context);
+void				md5_update(t_md5_context *context, unsigned char *input, unsigned int input_size);
+void				md5_finish(unsigned char digest[MD5_DIGEST_SIZE], t_md5_context *context);
+void				md5_transform(uint32_t state[4], unsigned char *block);
+void				md5_print(unsigned char digest[MD5_DIGEST_SIZE]);
 #endif

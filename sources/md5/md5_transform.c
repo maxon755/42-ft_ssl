@@ -6,13 +6,13 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 16:43:03 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/09 18:08:15 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/09 18:40:38 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_md5.h"
 
-static void round1(uint32_t s[4], uint32_t x[16])
+static void	round1(uint32_t s[4], uint32_t x[16])
 {
     FF(s[0], s[1], s[2], s[3], x[0], S11, 0xd76aa478);
     FF(s[3], s[0], s[1], s[2], x[1], S12, 0xe8c7b756);
@@ -32,7 +32,7 @@ static void round1(uint32_t s[4], uint32_t x[16])
     FF(s[1], s[2], s[3], s[0], x[15], S14, 0x49b40821);
 }
 
-static void round2(uint32_t s[4], uint32_t x[16])
+static void	round2(uint32_t s[4], uint32_t x[16])
 {
     GG(s[0], s[1], s[2], s[3], x[1], S21, 0xf61e2562);
     GG(s[3], s[0], s[1], s[2], x[6], S22, 0xc040b340);
@@ -52,7 +52,7 @@ static void round2(uint32_t s[4], uint32_t x[16])
     GG(s[1], s[2], s[3], s[0], x[12], S24, 0x8d2a4c8a);
 }
 
-static void round3(uint32_t s[4], uint32_t x[16])
+static void	round3(uint32_t s[4], uint32_t x[16])
 {
     HH(s[0], s[1], s[2], s[3], x[5], S31, 0xfffa3942);
     HH(s[3], s[0], s[1], s[2], x[8], S32, 0x8771f681);
@@ -72,7 +72,7 @@ static void round3(uint32_t s[4], uint32_t x[16])
     HH(s[1], s[2], s[3], s[0], x[2], S34, 0xc4ac5665);
 }
 
-static void round4(uint32_t s[4], uint32_t x[16])
+static void	round4(uint32_t s[4], uint32_t x[16])
 {
     II(s[0], s[1], s[2], s[3], x[0], S41, 0xf4292244);
     II(s[3], s[0], s[1], s[2], x[7], S42, 0x432aff97);
@@ -92,12 +92,12 @@ static void round4(uint32_t s[4], uint32_t x[16])
     II(s[1], s[2], s[3], s[0], x[9], S44, 0xeb86d391);
 }
 
-void md5_transform(uint32_t state[4], unsigned char *block)
+void		md5_transform(uint32_t state[4], unsigned char *block)
 {
 	uint32_t temp_state[4];
 	uint32_t x[16];
 
-	ft_memcpy(temp_state, state, MD5_HASH_SIZE);
+	ft_memcpy(temp_state, state, MD5_DIGEST_SIZE);
 	ft_memcpy(x, block, MD5_BLOCK_SIZE);
     round1(temp_state, x);
     round2(temp_state, x);
