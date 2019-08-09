@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/09 18:23:06 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/09 18:29:23 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,6 @@ typedef struct		s_md5_flags
 
 extern t_md5_flags md5_flags;
 
-typedef struct		s_md5_message
-{
-	char 			*source;
-	uint64_t		init_length;
-	uint64_t		source_size;
-	uint64_t		chunk_size;
-	unsigned int	padding_length;
-	unsigned char	*prepared;
-	uint64_t		result_length;
-}					t_md5_message;
-
 typedef struct		s_md5_context
 {
 	unsigned char	buffer[MD5_BLOCK_SIZE];
@@ -89,13 +78,5 @@ typedef struct		s_md5_context
 
 int 				md5(int argc, char * const *argv);
 
-void 				parse_flags(int argc, char * const *argv);
-t_md5_data			*init_data(void);
-t_md5_message		*init_string_message(char * str);
-void				hash_string(char * const str);
-void 				hash_file(char *filename);
-void				hash_input_stream(void);
-void				compute_hash(t_md5_data *data);
-unsigned int		get_padding_size(uint64_t length);
 
 #endif

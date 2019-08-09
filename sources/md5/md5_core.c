@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 17:05:34 by maks              #+#    #+#             */
-/*   Updated: 2019/08/09 18:24:35 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/09 18:28:47 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void md5_update(t_md5_context *context, unsigned char *input, unsigned int input
 	ft_memcpy(&context->buffer[index], &input[i], input_size - i);
 }
 
-md5_final(unsigned char digest[16], t_md5_context *context)
+md5_final(unsigned char digest[MD5_HASH_SIZE], t_md5_context *context)
 {
 	unsigned int index;
 	unsigned int padding_size;
