@@ -16,8 +16,9 @@
 # include "libft.h"
 # include <fcntl.h>
 # include <errno.h>
-#include <sys/stat.h>
-#include <unistd.h>
+# include <sys/stat.h>
+# include <unistd.h>
+# include <stdio.h>
 
 # define BYTES_FOR_SIZE 8
 # define MD5_BLOCK_SIZE 64
@@ -53,12 +54,10 @@
 
 typedef struct		s_md5_flags
 {
-	int				p;
-	int				q;
-	int				r;
-	int				s;
-	char			*s_arg;
-	int				wrong_argument;
+	unsigned char	p:1;
+	unsigned char	q:1;
+	unsigned char	r:1;
+	unsigned char	s:1;
 }					t_md5_flags;
 
 extern t_md5_flags md5_flags;

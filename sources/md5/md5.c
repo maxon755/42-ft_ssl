@@ -17,20 +17,33 @@ t_md5_flags md5_flags;
 int				md5(int argc, char * const *argv)
 {
 	int i;
+	int flag;
 
-	parse_flags(argc, argv);
-
-	if (md5_flags.wrong_argument) {
-		return (1);
+	i = 0;
+	while ((flag = ft_getopt(argc, argv, "pqrs:")) != -1)
+	{
+		if (flag == 'p')
+		{
+			md5_flags.p = 1;
+			hash_input_stream();
+		}
+		else if (flag == 'q')
+			md5_flags.q = 1;
+		else if (flag == 'r')
+			md5_flags.r = 1;
+		else if (flag == 's')
+		{
+			md5_flags.s = 1;
+			hash_string(optarg);
+		}
+		else if (flag == '?')
+			return (1);
+		i++;
 	}
 
-	if (md5_flags.s)
+	if (!i && !argv[optind])
 	{
-		hash_string(md5_flags.s_arg);
-	}
-
-	if (md5_flags.p)
-	{
+		ft_putendl("Ready to read from stdin");
 		hash_input_stream();
 	}
 
@@ -40,10 +53,6 @@ int				md5(int argc, char * const *argv)
 		ft_putendl(argv[i]);
 		hash_file(argv[i++]);
 	}
-
-	// ft_putendl("Prepared string dump:");
-	// ft_memdump(message->prepared, message->result_length);
-	// hash_message(message->prepared, message->result_length);
 
 	return 0;
 }
