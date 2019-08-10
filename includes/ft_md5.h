@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/10 11:19:49 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 11:42:58 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ typedef struct		s_md5_context
 }					t_md5_context;
 
 int					md5(int argc, char *const *argv);
+void				md5_hash_file(char *file_name);
+void				md5_hash_string(char *string);
+void				md5_hash_stdin(void);
 void				md5_init(t_md5_context *context);
 void				md5_update(
 						t_md5_context *context,
