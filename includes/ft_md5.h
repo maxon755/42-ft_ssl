@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_md5.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
+/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/09 21:47:11 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/10 11:19:49 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@
 # define H(x, y, z)	((x) ^ (y) ^ (z))
 # define I(x, y, z) ((y) ^ ((x) | ~(z)))
 
-# define FF(a, b, c, d, x, s, k) a += F(b, c, d) + (x) + (k), a = ROL32(a, s) + (b)
-# define GG(a, b, c, d, x, s, k) a += G(b, c, d) + (x) + (k), a = ROL32(a, s) + (b)
-# define HH(a, b, c, d, x, s, k) a += H(b, c, d) + (x) + (k), a = ROL32(a, s) + (b)
-# define II(a, b, c, d, x, s, k) a += I(b, c, d) + (x) + (k), a = ROL32(a, s) + (b)
+# define FF(a, b, c, d, x, s, k) a += F(b, c, d) + x + k, a = ROL32(a, s) + b
+# define GG(a, b, c, d, x, s, k) a += G(b, c, d) + x + k, a = ROL32(a, s) + b
+# define HH(a, b, c, d, x, s, k) a += H(b, c, d) + x + k, a = ROL32(a, s) + b
+# define II(a, b, c, d, x, s, k) a += I(b, c, d) + x + k, a = ROL32(a, s) + b
 
 typedef struct		s_md5_flags
 {
@@ -62,7 +62,7 @@ typedef struct		s_md5_flags
 	unsigned char	s:1;
 }					t_md5_flags;
 
-extern t_md5_flags md5_flags;
+extern t_md5_flags g_md5_flags;
 
 typedef struct		s_md5_context
 {
@@ -71,10 +71,15 @@ typedef struct		s_md5_context
 	uint64_t		source_size_bits;
 }					t_md5_context;
 
-int 				md5(int argc, char * const *argv);
+int					md5(int argc, char *const *argv);
 void				md5_init(t_md5_context *context);
-void				md5_update(t_md5_context *context, unsigned char *input, unsigned int input_size);
-void				md5_finish(unsigned char digest[MD5_DIGEST_SIZE], t_md5_context *context);
+void				md5_update(
+						t_md5_context *context,
+						unsigned char *input,
+						unsigned int input_size);
+void				md5_finish(
+						unsigned char digest[MD5_DIGEST_SIZE],
+						t_md5_context *context);
 void				md5_transform(uint32_t state[4], unsigned char *block);
 void				md5_print(unsigned char digest[MD5_DIGEST_SIZE]);
 #endif
