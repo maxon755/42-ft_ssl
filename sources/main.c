@@ -1,13 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/10 14:47:15 by mgayduk           #+#    #+#             */
+/*   Updated: 2019/08/10 14:56:55 by mgayduk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "ft_ssl.h"
 
-int main(int argc, char * const *argv)
+const t_hash_algo g_algo_list[ALGO_QTY] =
 {
-	int res;
+	{"md5", DIGEST, md5},
+};
 
-	res = md5(argc, argv);
-	if (res != 0) {
-		ft_printf("Something going wrong\n");
+t_hash_func	dispatch(char *algo_name)
+{
+	unsigned int i;
+
+	i = 0;
+	while (i < ALGO_QTY)
+	{
+		if (ft_strcmp(algo_name, g_algo_list[i].name) == 0)
+			return (g_algo_list[i].func);
+		i++;
 	}
-	return 0;
+	return (NULL);
+}
+
+int			main(int argc, char *const *argv)
+{
+	t_hash_func func;
+
+	func = dispatch(argv[1]);
+	if (!func)
+	{
+		print_error_message(argv[1]);
+		ft_putchar('\n');
+		print_help_message();
+		return (1);
+	}
+	return (func(argc - 1, &(argv[1])));
 }

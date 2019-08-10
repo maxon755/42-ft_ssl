@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   ssl_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/31 14:26:44 by maks              #+#    #+#             */
-/*   Updated: 2019/08/10 14:56:39 by mgayduk          ###   ########.fr       */
+/*   Created: 2019/08/10 14:41:22 by mgayduk           #+#    #+#             */
+/*   Updated: 2019/08/10 14:55:07 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "ft_ssl.h"
 
-# include "ft_md5.h"
-
-# define ALGO_QTY 1
-
-# define DIGEST 1
-
-typedef int	(*t_hash_func)(int, char *const *argv);
-
-typedef struct	s_hash_algo
+void		print_error_message(char *wrong_name)
 {
-	char		*name;
-	int			category;
-	t_hash_func	func;
-}				t_hash_algo;
+	ft_printf("ft_ssl: Error: %s is an invalid command.\n", wrong_name);
+}
 
-extern const	t_hash_algo g_algo_list[ALGO_QTY];
+void		print_help_message(void)
+{
+	unsigned int i;
 
-void			print_error_message(char *wrong_name);
-void			print_help_message();
-
-#endif
+	ft_printf("Standard commands:\n\n");
+	ft_printf("Message Digest commands:\n");
+	i = 0;
+	while (i < ALGO_QTY)
+	{
+		if (g_algo_list[i].category == DIGEST)
+			ft_putendl(g_algo_list[i].name);
+		i++;
+	}
+}
