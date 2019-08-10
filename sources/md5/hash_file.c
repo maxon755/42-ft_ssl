@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 11:40:22 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/10 13:07:44 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:58:20 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	get_file_descriptor(char *file_name)
 	return (fd);
 }
 
-void	md5_hash_file(char *file_name)
+void		md5_hash_file(char *file_name)
 {
 	int				fd;
 	unsigned int	byte_readed;
