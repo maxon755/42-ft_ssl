@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/10 11:55:43 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:09:58 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 t_md5_flags g_md5_flags;
 
+void		handle_files(int argc, char *const *argv)
+{
+	int	i;
+	i = optind;
+	while (i < argc)
+		md5_hash_file(argv[i++]);
+}
+
 int			md5(int argc, char *const *argv)
 {
 	int	flag;
-	int	i;
 
-	ft_printf("argc %i\n", argc);
-	if (argc == 1)
-	{
-		g_md5_flags.p = 1;
-		md5_hash_stdin();
-	}
 	while ((flag = ft_getopt(argc, argv, "pqrs:")) != -1)
 	{
 		if (flag == 'p')
@@ -44,14 +45,9 @@ int			md5(int argc, char *const *argv)
 		else if (flag == '?')
 			return (1);
 	}
-	i = optind;
-	while (i < argc)
-	{
-		ft_putendl(argv[i]);
-		md5_hash_file(argv[i]);
-		i++;
-	}
+	if (!argv[optind] && !g_md5_flags.s)
+		md5_hash_stdin();
+	handle_files(argc, argv);
 
-	system("leaks ft_ssl");
 	return (0);
 }

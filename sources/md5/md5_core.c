@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 17:05:34 by maks              #+#    #+#             */
-/*   Updated: 2019/08/10 11:32:50 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 12:40:54 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,4 @@ void	md5_finish(
 	md5_update(context, bits, MD5_BYTES_FOR_SIZE);
 	ft_memcpy(digest, context->state, MD5_DIGEST_SIZE);
 	ft_bzero(context, sizeof(t_md5_context));
-}
-
-void	md5_print(unsigned char digest[MD5_DIGEST_SIZE])
-{
-	ft_memdump(digest, MD5_DIGEST_SIZE);
 }

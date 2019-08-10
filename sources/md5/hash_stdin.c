@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 11:42:28 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/10 11:55:09 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:00:32 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,18 @@ void		md5_hash_stdin(void)
 
 	input = NULL;
 	md5_init(&context);
-	while ((byte_readed = read(STDIN_FILENO, buffer, MD5_FILE_BUFFER)))
+	while ((byte_readed = read(STDIN_FILENO, buffer, MD5_FILE_BUFFER)) > 0)
 	{
 		md5_update(&context, buffer, byte_readed);
 		if (g_md5_flags.p)
 			input = append_input(input, buffer, byte_readed);
 	}
 	md5_finish(digest, &context);
-	if (g_md5_flags.p)
+	if (g_md5_flags.p && input != NULL)
 	{
-		ft_printf("%s\n", input);
+		ft_printf("%s", input);
 		free(input);
 	}
-	md5_print(digest);
+	md5_print_digest(digest);
+	ft_putchar('\n');
 }

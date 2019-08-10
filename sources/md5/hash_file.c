@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 11:40:22 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/10 11:41:18 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:07:44 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	get_file_descriptor(char *file_name)
 	stat(file_name, &path_stat);
 	if (S_ISDIR(path_stat.st_mode))
 	{
-		ft_printf("ft_md5: %s: Is a directory\n", file_name);
+		ft_printf("%&ft_md5: %s: Is a directory\n", 2, file_name);
 		return (-1);
 	}
 	return (fd);
@@ -42,9 +42,9 @@ void	md5_hash_file(char *file_name)
 	if ((fd = get_file_descriptor(file_name)) == -1)
 		return ;
 	md5_init(&context);
-	while ((byte_readed = read(fd, buffer, MD5_FILE_BUFFER)))
+	while ((byte_readed = read(fd, buffer, MD5_FILE_BUFFER)) > 0)
 		md5_update(&context, buffer, byte_readed);
 	md5_finish(digest, &context);
 	close(fd);
-	md5_print(digest);
+	md5_print(digest, file_name, FT_TRUE);
 }
