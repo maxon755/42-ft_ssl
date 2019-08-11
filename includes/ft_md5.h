@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_md5.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/10 14:00:51 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/11 13:07:24 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MD5_FILE_BUFFER MD5_BLOCK_SIZE * 16
 # define MD5_DIGEST_SIZE 16
 
-# define ROL32(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
+# define ROL32(x, n) (FT_ROTL(x, n, 32))
 
 # define S11 7
 # define S12 12

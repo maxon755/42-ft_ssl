@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 14:47:15 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/10 14:56:55 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/11 14:10:26 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 const t_hash_algo g_algo_list[ALGO_QTY] =
 {
 	{"md5", DIGEST, md5},
+	{"sha_256", DIGEST, sha_256},
 };
 
 t_hash_func	dispatch(char *algo_name)

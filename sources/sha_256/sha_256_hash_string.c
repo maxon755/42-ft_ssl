@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sha_256_hash_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 17:22:47 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/10 17:30:36 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/11 13:41:35 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	sha_256_hash_string(char *string)
 	sha_256_init(&context);
 	sha_256_update(&context, (unsigned char *)string, length);
 	sha_256_finish(digest, &context);
-	sha_256_print(digest, string, FT_FALSE);
+	// sha_256_print(digest, string, FT_FALSE);
 }

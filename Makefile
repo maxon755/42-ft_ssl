@@ -5,17 +5,19 @@ NAME = ft_ssl
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror -g
 
+ALGOS = md5 sha_256
+
 # Directories
 SRC_DIR := ./sources
 OBJ_DIR := ./objects
 LFT_DIR := ./libft
 INC_DIR := ./includes $(LFT_DIR)/includes
 DEP_DIR := ./deps
-MD5_DIR := $(SRC_DIR)/md5
-SRC_DIR := $(SRC_DIR) $(MD5_DIR)
+ALGO_DIRS := $(addprefix $(SRC_DIR)/, $(ALGOS))
+SRC_DIRS := $(SRC_DIR) $(ALGO_DIRS)
 
 # Object files
-SEARCH_WILCARDS := $(addsuffix /*.c,$(SRC_DIR))
+SEARCH_WILCARDS := $(addsuffix /*.c,$(SRC_DIRS))
 SRC := $(notdir $(patsubst %.c,%.o,$(wildcard $(SEARCH_WILCARDS))))
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
@@ -39,7 +41,7 @@ prepare_dirs:
 build_lib:
 	@make  -s -C $(LFT_DIR)
 
-VPATH := $(SRC_DIR)
+VPATH := $(SRC_DIRS)
 
 $(OBJ_DIR)/%.o: %.c
 	$(CC) $(FLAGS) $(INC) -MMD -MF $(DEP_DIR)/$(notdir $(patsubst %.o,%.d,$@)) -c $< -o $@
