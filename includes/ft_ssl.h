@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:26:44 by maks              #+#    #+#             */
-/*   Updated: 2019/08/11 14:16:44 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/11 20:47:42 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # define ALGO_QTY 2
 
 # define DIGEST 1
+
+# define ROL32(x, n) (FT_ROTL(x, n, 32))
+# define ROR32(x, n) (FT_ROTR(x, n, 32))
 
 typedef int	(*t_hash_func)(int, char *const *argv);
 

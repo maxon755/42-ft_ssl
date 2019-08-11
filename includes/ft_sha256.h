@@ -22,6 +22,13 @@
 # define SHA256_DIGEST_SIZE 32
 # define SHA256_STATE_SIZE 8
 
+# define SHA256_CH(x, y, z) (((x) & (y)) ^ (~(x) & (z)))
+# define SHA256_MAJ(x, y, z) (((x) & (y)) ^ ((x) & (z)) ^ ((y) & (z)))
+# define SHA256_SIGMA1(x) (ROR32(x, 2) ^ ROR32(x, 13) ^ ROR32(x, 22))
+# define SHA256_SIGMA2(x) (ROR32(x, 6) ^ ROR32(x, 11) ^ ROR32(x, 25))
+# define SHA256_SIGMA3(x) (ROR32(x, 7) ^ ROR32(x, 18) ^ SHR32(x, 3))
+# define SHA256_SIGMA4(x) (ROR32(x, 17) ^ ROR32(x, 19) ^ SHR32(x, 10))
+
 typedef struct		s_sha256_flags
 {
 	unsigned char	p:1;
