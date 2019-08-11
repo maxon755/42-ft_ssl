@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha_256_hash_string.c                              :+:      :+:    :+:   */
+/*   sha256_hash_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sha_256.h"
+#include "ft_sha256.h"
 
-void	sha_256_hash_string(char *string)
+void	sha256_hash_string(char *string)
 {
-	t_sha_256_context	context;
-	unsigned char		digest[SHA_256_DIGEST_SIZE];
+	t_sha256_context	context;
+	unsigned char		digest[SHA256_DIGEST_SIZE];
 	size_t				length;
 
 	length = ft_strlen(string);
-	sha_256_init(&context);
-	sha_256_update(&context, (unsigned char *)string, length);
-	sha_256_finish(digest, &context);
-	// sha_256_print(digest, string, FT_FALSE);
+	sha256_init(&context);
+	sha256_update(&context, (unsigned char *)string, length);
+	sha256_finish(digest, &context);
+	// sha256_print(digest, string, FT_FALSE);
 }

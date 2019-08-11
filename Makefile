@@ -5,7 +5,7 @@ NAME = ft_ssl
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror -g
 
-ALGOS = md5 sha_256
+ALGOS = md5 sha256
 
 # Directories
 SRC_DIR := ./sources

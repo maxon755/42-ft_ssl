@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha_256_core.c                                     :+:      :+:    :+:   */
+/*   sha256_core.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sha_256.h"
+#include "ft_sha256.h"
 
-static unsigned char g_sha_256_padding[64] = {
+static unsigned char g_sha256_padding[64] = {
 	0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
-void	sha_256_init(t_sha_256_context *context)
+void	sha256_init(t_sha256_context *context)
 {
 	context->source_size_bits = 0;
 	context->state[0] = 0x6A09E667;
@@ -31,8 +31,8 @@ void	sha_256_init(t_sha_256_context *context)
 	context->state[7] = 0x5BE0CD19;
 }
 
-void	sha_256_update(
-	t_sha_256_context *context,
+void	sha256_update(
+	t_sha256_context *context,
 	unsigned char *input,
 	unsigned int input_size)
 {
@@ -40,18 +40,18 @@ void	sha_256_update(
 	unsigned int index;
 	unsigned int rest_size;
 
-	index = FT_TO_BYTES(context->source_size_bits) % SHA_256_BLOCK_SIZE;
+	index = FT_TO_BYTES(context->source_size_bits) % SHA256_BLOCK_SIZE;
 	context->source_size_bits += FT_TO_BITS(input_size);
-	rest_size = SHA_256_BLOCK_SIZE - index;
+	rest_size = SHA256_BLOCK_SIZE - index;
 	if (input_size >= rest_size)
 	{
 		ft_memcpy(&context->buffer[index], input, rest_size);
 		// md5_transform(context->state, context->buffer);
 		i = rest_size;
-		while (i + SHA_256_BLOCK_SIZE - 1 < input_size)
+		while (i + SHA256_BLOCK_SIZE - 1 < input_size)
 		{
 			// md5_transform(context->state, &input[i]);
-			i += SHA_256_BLOCK_SIZE;
+			i += SHA256_BLOCK_SIZE;
 		}
 		index = 0;
 	}
@@ -60,15 +60,15 @@ void	sha_256_update(
 	ft_memcpy(&context->buffer[index], &input[i], input_size - i);
 }
 
-void	sha_256_finish(
-	unsigned char digest[SHA_256_DIGEST_SIZE],
-	t_sha_256_context *context)
+void	sha256_finish(
+	unsigned char digest[SHA256_DIGEST_SIZE],
+	t_sha256_context *context)
 {
 	unsigned int	index;
 	unsigned int	padding_size;
-	unsigned char	bits[SHA_256_BYTES_FOR_SIZE];
+	unsigned char	bits[SHA256_BYTES_FOR_SIZE];
 
-	// ft_memcpy(bits, &context->source_size_bits, SHA_256_BYTES_FOR_SIZE);
+	// ft_memcpy(bits, &context->source_size_bits, SHA256_BYTES_FOR_SIZE);
 	bits[0] = (uint8_t)(context->source_size_bits >> 56);
 	bits[1] = (uint8_t)(context->source_size_bits >> 48);
 	bits[2] = (uint8_t)(context->source_size_bits >> 40);
@@ -78,10 +78,10 @@ void	sha_256_finish(
 	bits[6] = (uint8_t)(context->source_size_bits >> 8);
 	bits[7] = (uint8_t)(context->source_size_bits);
 
-	index = FT_TO_BYTES(context->source_size_bits) % SHA_256_BLOCK_SIZE;
+	index = FT_TO_BYTES(context->source_size_bits) % SHA256_BLOCK_SIZE;
 	padding_size = index < 56 ? 56 - index : 120 - index;
-	sha_256_update(context, g_sha_256_padding, padding_size);
-	sha_256_update(context, bits, SHA_256_BYTES_FOR_SIZE);
-	ft_memcpy(digest, context->state, SHA_256_DIGEST_SIZE);
-	ft_bzero(context, sizeof(t_sha_256_context));
+	sha256_update(context, g_sha256_padding, padding_size);
+	sha256_update(context, bits, SHA256_BYTES_FOR_SIZE);
+	ft_memcpy(digest, context->state, SHA256_DIGEST_SIZE);
+	ft_bzero(context, sizeof(t_sha256_context));
 }
