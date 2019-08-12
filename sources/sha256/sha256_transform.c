@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 20:50:23 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 13:41:55 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 13:53:11 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ void		sha256_transform(
 
 	ft_memcpy(temp_state, state, SHA256_DIGEST_SIZE);
 	init_buffer(w, block);
-	i = 0;
-	while (i < SHA256_BLOCK_SIZE)
+	i = -1;
+	while (++i < SHA256_BLOCK_SIZE)
 	{
 		temp1 = SHA256_H + SHA256_SIGMA2(SHA256_E) +
-				SHA256_CH(SHA256_E, SHA256_F, SHA256_G) + g_k[i] + w[i++];
+				SHA256_CH(SHA256_E, SHA256_F, SHA256_G) + g_k[i] + w[i];
 		temp2 = SHA256_SIGMA1(SHA256_A) +
 				SHA256_MAJ(SHA256_A, SHA256_B, SHA256_C);
 		SHA256_H = SHA256_G;
