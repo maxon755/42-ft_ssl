@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 13:46:36 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 14:35:23 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				md5(int argc, char *const *argv)
 		else if (flag == '?')
 			return (1);
 	}
-	if (!argv[optind] && !g_md5_flags.s && !g_md5_flags.p)
+	if (!argv[optind] && !g_md5_flags.s)
 		md5_hash_stdin();
 	handle_files(argc, argv);
 	return (0);

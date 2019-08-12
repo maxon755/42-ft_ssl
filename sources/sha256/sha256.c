@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:26:07 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 13:38:34 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 14:58:49 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				sha256(int argc, char *const *argv)
 		else if (flag == '?')
 			return (1);
 	}
-	if (!argv[optind] && !g_sha256_flags.s && !g_sha256_flags.p)
+	if (!argv[optind] && !g_sha256_flags.s)
 		sha256_hash_stdin();
 	handle_files(argc, argv);
 	return (0);
