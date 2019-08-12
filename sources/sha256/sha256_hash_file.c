@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 11:40:22 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/12 13:25:44 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 13:43:10 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static int	get_file_descriptor(char *file_name)
 
 void		sha256_hash_file(char *file_name)
 {
-	int				fd;
-	unsigned int	byte_readed;
-	unsigned char	buffer[SHA256_FILE_BUFFER];
-	unsigned char	digest[SHA256_DIGEST_SIZE];
+	int					fd;
+	unsigned int		byte_readed;
+	unsigned char		buffer[SHA256_FILE_BUFFER];
+	unsigned char		digest[SHA256_DIGEST_SIZE];
 	t_sha256_context	context;
 
 	if ((fd = get_file_descriptor(file_name)) == -1)

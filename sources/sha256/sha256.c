@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:26:07 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 13:26:09 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 13:38:34 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		handle_files(int argc, char *const *argv)
 		sha256_hash_file(argv[i++]);
 }
 
-int			sha256(int argc, char *const *argv)
+int				sha256(int argc, char *const *argv)
 {
 	int	flag;
 

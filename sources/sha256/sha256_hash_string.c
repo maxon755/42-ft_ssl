@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha256_hash_string.c                              :+:      :+:    :+:   */
+/*   sha256_hash_string.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/10 17:22:47 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/11 13:41:35 by maks             ###   ########.fr       */
+/*   Created: 2019/08/12 13:40:00 by maks              #+#    #+#             */
+/*   Updated: 2019/08/12 13:42:52 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ void	sha256_hash_string(char *string)
 	sha256_init(&context);
 	sha256_update(&context, (unsigned char *)string, length);
 	sha256_finish(digest, &context);
-
 	sha256_print(digest, string, FT_FALSE);
 }

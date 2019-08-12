@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha256_core.c                                     :+:      :+:    :+:   */
+/*   sha256_core.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/10 17:26:10 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/11 13:44:26 by maks             ###   ########.fr       */
+/*   Created: 2019/08/12 13:38:58 by maks              #+#    #+#             */
+/*   Updated: 2019/08/12 13:39:15 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	sha256_finish(
 	bits[5] = (uint8_t)(context->source_size_bits >> 16);
 	bits[6] = (uint8_t)(context->source_size_bits >> 8);
 	bits[7] = (uint8_t)(context->source_size_bits);
-
 	index = FT_TO_BYTES(context->source_size_bits) % SHA256_BLOCK_SIZE;
 	padding_size = index < 56 ? 56 - index : 120 - index;
 	sha256_update(context, g_sha256_padding, padding_size);

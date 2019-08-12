@@ -1,14 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sha256.h                                       :+:      :+:    :+:   */
+/*   ft_sha256.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/10 17:13:00 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/11 14:10:19 by maks             ###   ########.fr       */
+/*   Created: 2019/08/12 13:45:18 by maks              #+#    #+#             */
+/*   Updated: 2019/08/12 13:46:22 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FT_SHA256_H
+# define FT_SHA256_H
 
 # include "libft.h"
 # include <fcntl.h>
@@ -23,7 +26,6 @@
 # define SHA256_DIGEST_SIZE		32
 # define SHA256_STATE_SIZE		8
 # define SHA256_FILE_BUFFER 	(SHA256_BLOCK_SIZE * 16)
-
 
 # define ROL32(x, n) (FT_ROTL(x, n, 32))
 # define ROR32(x, n) (FT_ROTR(x, n, 32))
@@ -73,11 +75,14 @@ void				sha256_update(
 void				sha256_finish(
 						unsigned char digest[SHA256_DIGEST_SIZE],
 						t_sha256_context *context);
-void 				sha256_transform(
-					uint32_t state[SHA256_STATE_SIZE],
-					unsigned char block[SHA256_BLOCK_SIZE]);
+void				sha256_transform(
+						uint32_t state[SHA256_STATE_SIZE],
+						unsigned char block[SHA256_BLOCK_SIZE]);
 void				sha256_print(
 						unsigned char digest[SHA256_DIGEST_SIZE],
 						char *source,
 						ft_bool is_file);
-void				sha256_print_digest(unsigned char digest[SHA256_DIGEST_SIZE]);
+void				sha256_print_digest(
+						unsigned char digest[SHA256_DIGEST_SIZE]);
+
+#endif

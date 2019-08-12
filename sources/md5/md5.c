@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   md5.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 13:14:06 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:46:36 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		handle_files(int argc, char *const *argv)
 		md5_hash_file(argv[i++]);
 }
 
-int			md5(int argc, char *const *argv)
+int				md5(int argc, char *const *argv)
 {
 	int	flag;
 

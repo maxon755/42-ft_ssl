@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:17:04 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/12 13:25:46 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 13:43:31 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static char	*append_input(
 
 void		sha256_hash_stdin(void)
 {
-	unsigned int	byte_readed;
+	unsigned int		byte_readed;
 	t_sha256_context	context;
-	unsigned char	digest[SHA256_DIGEST_SIZE];
-	unsigned char	buffer[SHA256_BLOCK_SIZE];
-	char			*input;
+	unsigned char		digest[SHA256_DIGEST_SIZE];
+	unsigned char		buffer[SHA256_BLOCK_SIZE];
+	char				*input;
 
 	input = NULL;
 	sha256_init(&context);
