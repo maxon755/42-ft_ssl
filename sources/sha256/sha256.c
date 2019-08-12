@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha256.c                                          :+:      :+:    :+:   */
+/*   sha256.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/10 17:11:24 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/10 17:18:11 by mgayduk          ###   ########.fr       */
+/*   Created: 2019/08/12 13:26:07 by maks              #+#    #+#             */
+/*   Updated: 2019/08/12 13:26:09 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 t_sha256_flags g_sha256_flags;
 
-// void		handle_files(int argc, char *const *argv)
-// {
-// 	int	i;
+static void		handle_files(int argc, char *const *argv)
+{
+	int	i;
 
-// 	i = optind;
-// 	while (i < argc)
-// 		sha256_hash_file(argv[i++]);
-// }
+	i = optind;
+	while (i < argc)
+		sha256_hash_file(argv[i++]);
+}
 
 int			sha256(int argc, char *const *argv)
 {
@@ -32,7 +32,7 @@ int			sha256(int argc, char *const *argv)
 		if (flag == 'p')
 		{
 			g_sha256_flags.p = 1;
-			// sha256_hash_stdin();
+			sha256_hash_stdin();
 		}
 		else if (flag == 'q')
 			g_sha256_flags.q = 1;
@@ -46,8 +46,8 @@ int			sha256(int argc, char *const *argv)
 		else if (flag == '?')
 			return (1);
 	}
-	// if (!argv[optind] && !g_sha256_flags.s && !g_sha256_flags.p)
-		// sha256_hash_stdin();
-	// handle_files(argc, argv);
+	if (!argv[optind] && !g_sha256_flags.s && !g_sha256_flags.p)
+		sha256_hash_stdin();
+	handle_files(argc, argv);
 	return (0);
 }

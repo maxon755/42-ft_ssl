@@ -22,5 +22,6 @@ void	sha256_hash_string(char *string)
 	sha256_init(&context);
 	sha256_update(&context, (unsigned char *)string, length);
 	sha256_finish(digest, &context);
-	// sha256_print(digest, string, FT_FALSE);
+
+	sha256_print(digest, string, FT_FALSE);
 }

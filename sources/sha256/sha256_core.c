@@ -46,11 +46,11 @@ void	sha256_update(
 	if (input_size >= rest_size)
 	{
 		ft_memcpy(&context->buffer[index], input, rest_size);
-		// md5_transform(context->state, context->buffer);
+		sha256_transform(context->state, context->buffer);
 		i = rest_size;
 		while (i + SHA256_BLOCK_SIZE - 1 < input_size)
 		{
-			// md5_transform(context->state, &input[i]);
+			sha256_transform(context->state, &input[i]);
 			i += SHA256_BLOCK_SIZE;
 		}
 		index = 0;
@@ -68,7 +68,6 @@ void	sha256_finish(
 	unsigned int	padding_size;
 	unsigned char	bits[SHA256_BYTES_FOR_SIZE];
 
-	// ft_memcpy(bits, &context->source_size_bits, SHA256_BYTES_FOR_SIZE);
 	bits[0] = (uint8_t)(context->source_size_bits >> 56);
 	bits[1] = (uint8_t)(context->source_size_bits >> 48);
 	bits[2] = (uint8_t)(context->source_size_bits >> 40);

@@ -6,7 +6,7 @@
 /*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/10 13:59:58 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:14:06 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_md5_flags g_md5_flags;
 
-void		handle_files(int argc, char *const *argv)
+static void		handle_files(int argc, char *const *argv)
 {
 	int	i;
 

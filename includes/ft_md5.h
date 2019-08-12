@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_md5.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
+/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/11 20:47:53 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 13:11:56 by mgayduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <unistd.h>
 # include <stdio.h>
 
-# define MD5_BYTES_FOR_SIZE 8
-# define MD5_BLOCK_SIZE 64
-# define MD5_FILE_BUFFER MD5_BLOCK_SIZE * 16
-# define MD5_DIGEST_SIZE 16
+# define MD5_BYTES_FOR_SIZE	8
+# define MD5_BLOCK_SIZE		64
+# define MD5_FILE_BUFFER	(MD5_BLOCK_SIZE * 16)
+# define MD5_DIGEST_SIZE	16
 
 # define S11 7
 # define S12 12
@@ -41,6 +41,9 @@
 # define S42 10
 # define S43 15
 # define S44 21
+
+# define ROL32(x, n) (FT_ROTL(x, n, 32))
+# define ROR32(x, n) (FT_ROTR(x, n, 32))
 
 # define F(x, y, z) (((x) & (y)) | (~(x) & (z)))
 # define G(x, y, z)	(((x) & (z)) | ((y) & ~(z)))
