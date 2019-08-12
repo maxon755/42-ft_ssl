@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 14:35:23 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 18:05:47 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ static void		handle_files(int argc, char *const *argv)
 	i = optind;
 	while (i < argc)
 		md5_hash_file(argv[i++]);
+}
+
+static int		print_usage(void)
+{
+	ft_printf("usage: md5 [-pqr] [-s string] [files ...]\n");
+	return (1);
 }
 
 int				md5(int argc, char *const *argv)
@@ -44,9 +50,9 @@ int				md5(int argc, char *const *argv)
 			md5_hash_string(optarg);
 		}
 		else if (flag == '?')
-			return (1);
+			return print_usage();
 	}
-	if (!argv[optind] && !g_md5_flags.s)
+	if (!argv[optind] && !g_md5_flags.s && !g_md5_flags.p)
 		md5_hash_stdin();
 	handle_files(argc, argv);
 	return (0);

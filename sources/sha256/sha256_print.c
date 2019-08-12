@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:40:28 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/12 14:24:14 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 18:17:44 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void	sha256_print(
 	}
 	sha256_print_digest(digest);
 	if (g_sha256_flags.r && !g_sha256_flags.q)
-		ft_printf(" %s", source);
+		is_file ? ft_printf(" %s", source) : ft_printf(" \"%s\"", source);
 	ft_putchar('\n');
 }

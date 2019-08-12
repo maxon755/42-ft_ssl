@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:26:07 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 14:58:49 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 18:06:39 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ static void		handle_files(int argc, char *const *argv)
 	i = optind;
 	while (i < argc)
 		sha256_hash_file(argv[i++]);
+}
+
+static int		print_usage(void)
+{
+	ft_printf("usage: sha256 [-pqr] [-s string] [files ...]\n");
+	return (1);
 }
 
 int				sha256(int argc, char *const *argv)
@@ -44,9 +50,9 @@ int				sha256(int argc, char *const *argv)
 			sha256_hash_string(optarg);
 		}
 		else if (flag == '?')
-			return (1);
+			return print_usage();
 	}
-	if (!argv[optind] && !g_sha256_flags.s)
+	if (!argv[optind] && !g_sha256_flags.s && !g_sha256_flags.p)
 		sha256_hash_stdin();
 	handle_files(argc, argv);
 	return (0);

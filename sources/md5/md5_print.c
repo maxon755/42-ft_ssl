@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:40:28 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/12 14:24:05 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 18:13:20 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	md5_print(
 	if (!g_md5_flags.q && !g_md5_flags.r)
 	{
 		if (is_file)
-			ft_printf("MD5(%s) = ", source);
+			ft_printf("MD5 (%s) = ", source);
 		else
-			ft_printf("MD5(\"%s\") = ", source);
+			ft_printf("MD5 (\"%s\") = ", source);
 	}
 	md5_print_digest(digest);
 	if (g_md5_flags.r && !g_md5_flags.q)
-		ft_printf(" %s", source);
+		is_file ? ft_printf(" %s", source) : ft_printf(" \"%s\"", source);
 	ft_putchar('\n');
 }

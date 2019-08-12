@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:17:04 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/12 14:58:18 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/12 15:53:13 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,4 @@ void		sha256_hash_stdin(void)
 	sha256_finish(digest, &context);
 	sha256_print_digest(digest);
 	ft_putchar('\n');
+}
