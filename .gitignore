@@ -10,5 +10,5 @@
 # executable
 ft_ssl
 
-test
 *.dSYM
+__pycache__
