@@ -43,7 +43,8 @@ ut.assertOutputWithString(ft_ssl,
 )
 ut.assertOutputWithString(
 	ft_ssl,
-	'Pity the living.\n40133cfe543247c1cae0ffb0003c1179ce9fb0046bee19f9fca167380643ba45\n',
+	'Pity the living.\n' +
+	'40133cfe543247c1cae0ffb0003c1179ce9fb0046bee19f9fca167380643ba45\n',
 	'-p -r',
 	'echo "Pity the living."'
 )

@@ -20,7 +20,8 @@ ut.assertOutput(ft_ssl, open_ssl, '-p', 'echo "Do not pity the dead, Harry."')
 ut.assertOutput(ft_ssl, open_ssl, pipeIn='cat ' + test_file)
 ut.assertOutputWithString(
 	ft_ssl,
-	'Pity the living.\ne20c3b973f63482a778f3fd1869b7f25\n',
+	'Pity the living.\n' +
+	'e20c3b973f63482a778f3fd1869b7f25\n',
 	'-p -r',
 	'echo "Pity the living."'
 )
