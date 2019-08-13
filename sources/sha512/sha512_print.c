@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:40:28 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/13 13:20:00 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/13 14:38:54 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ void	sha512_print_digest(unsigned char digest[SHA512_DIGEST_SIZE])
 	i = 0;
 	while (i < SHA512_DIGEST_SIZE)
 	{
+		ft_printf("%02x", digest[i + 7]);
+		ft_printf("%02x", digest[i + 6]);
+		ft_printf("%02x", digest[i + 5]);
+		ft_printf("%02x", digest[i + 4]);
 		ft_printf("%02x", digest[i + 3]);
 		ft_printf("%02x", digest[i + 2]);
 		ft_printf("%02x", digest[i + 1]);
 		ft_printf("%02x", digest[i]);
-		i += 4;
+		i += 8;
 	}
 }
 

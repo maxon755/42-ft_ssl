@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 14:47:15 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/13 12:34:22 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/13 14:11:02 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ const t_hash_algo g_algo_list[ALGO_QTY] =
 	{"md5", DIGEST, md5},
 	{"sha256", DIGEST, sha256},
 	{"sha224", DIGEST, sha224},
+	{"sha512", DIGEST, sha512},
 };
 
 t_hash_func	dispatch(char *algo_name)

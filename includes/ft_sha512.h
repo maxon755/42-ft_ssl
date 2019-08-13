@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:45:18 by maks              #+#    #+#             */
-/*   Updated: 2019/08/13 13:21:31 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/13 16:36:07 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@
 # include <unistd.h>
 # include <stdio.h>
 
-# define SHA512_BYTES_FOR_SIZE	8
-# define SHA512_BLOCK_SIZE 		64
+# define SHA512_BYTES_FOR_SIZE	16
+# define SHA512_BLOCK_SIZE 		128
 # define SHA512_BUFFER_SIZE		SHA512_BLOCK_SIZE
-# define SHA512_DIGEST_SIZE		32
+# define SHA512_DIGEST_SIZE		64
 # define SHA512_STATE_SIZE		8
 # define SHA512_FILE_BUFFER 	(SHA512_BLOCK_SIZE * 16)
 
-# define ROL32(x, n) (FT_ROTL(x, n, 32))
-# define ROR32(x, n) (FT_ROTR(x, n, 32))
+# define ROL64(x, n) (FT_ROTL(x, n, 64))
+# define ROR64(x, n) (FT_ROTR(x, n, 64))
 
 # define SHA512_CH(x, y, z) (((x) & (y)) ^ (~(x) & (z)))
 # define SHA512_MAJ(x, y, z) (((x) & (y)) ^ ((x) & (z)) ^ ((y) & (z)))
-# define SHA512_SIGMA1(x) (ROR32(x, 2) ^ ROR32(x, 13) ^ ROR32(x, 22))
-# define SHA512_SIGMA2(x) (ROR32(x, 6) ^ ROR32(x, 11) ^ ROR32(x, 25))
-# define SHA512_SIGMA3(x) (ROR32(x, 7) ^ ROR32(x, 18) ^ SHR(x, 3))
-# define SHA512_SIGMA4(x) (ROR32(x, 17) ^ ROR32(x, 19) ^ SHR(x, 10))
+# define SHA512_BSIG0(x) (ROR64(x, 28) ^ ROR64(x, 34) ^ ROR64(x, 39))
+# define SHA512_BSIG1(x) (ROR64(x, 14) ^ ROR64(x, 18) ^ ROR64(x, 41))
+# define SHA512_SSIG0(x) (ROR64(x, 1) ^ ROR64(x, 8) ^ SHR(x, 7))
+# define SHA512_SSIG1(x) (ROR64(x, 19) ^ ROR64(x, 61) ^ SHR(x, 6))
 
 # define SHA512_A (temp_state[0])
 # define SHA512_B (temp_state[1])
@@ -45,6 +45,8 @@
 # define SHA512_F (temp_state[5])
 # define SHA512_G (temp_state[6])
 # define SHA512_H (temp_state[7])
+
+typedef uint64_t t_sha512_word;
 
 typedef struct		s_sha512_flags
 {
@@ -59,8 +61,8 @@ extern t_sha512_flags g_sha512_flags;
 typedef struct		s_sha512_context
 {
 	unsigned char	buffer[SHA512_BLOCK_SIZE];
-	uint64_t		state[SHA512_STATE_SIZE];
-	uint64_t		source_size_bits;
+	t_sha512_word	state[SHA512_STATE_SIZE];
+	__uint128_t		source_size_bits;
 }					t_sha512_context;
 
 int					sha512(int argc, char *const *argv);
