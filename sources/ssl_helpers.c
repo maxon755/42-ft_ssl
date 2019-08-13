@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ssl_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 14:41:22 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/10 14:55:07 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/13 12:51:39 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void		print_help_message(void)
 			ft_putendl(g_algo_list[i].name);
 		i++;
 	}
+	ft_putendl("\nCipher commands:");
 }
