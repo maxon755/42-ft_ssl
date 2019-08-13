@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ssl.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgayduk <mgayduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:26:44 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 11:11:49 by mgayduk          ###   ########.fr       */
+/*   Updated: 2019/08/13 12:34:29 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include "ft_md5.h"
 # include "ft_sha256.h"
+# include "ft_sha224.h"
 
-# define ALGO_QTY 2
+# define ALGO_QTY 3
 
 # define DIGEST 1
 
