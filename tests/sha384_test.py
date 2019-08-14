@@ -7,6 +7,26 @@ ut = UnitTest()
 ft_ssl = './ft_ssl sha384'
 test_file = 'tests/test_file'
 
+# Common
+ut.assertOutputWithString(
+	ft_ssl,
+	'usage: sha384 [-pqrh] [-s string] [files ...]\n' +
+	'       use -h for help\n',
+	'-x',
+)
+ut.assertOutputWithString(
+	ft_ssl,
+'''Secure Hash Algorithm Version 2
+usage: sha384 [-pqrh] [-s string] [files ...]
+  -p, echo STDIN to STDOUT and append the checksum to STDOUT
+  -q, quiet mode
+  -r, reverse the format of the output
+  -s, print the sum of the given string
+  -h, help
+''',
+	'-h',
+)
+
 # Flag -s
 ut.assertOutputWithString(ft_ssl,
 	'SHA384 ("") = 38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b\n',
