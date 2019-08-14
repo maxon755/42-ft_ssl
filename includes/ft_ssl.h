@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:26:44 by maks              #+#    #+#             */
-/*   Updated: 2019/08/13 14:11:12 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 11:01:32 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 # define FT_SSL_H
 
 # include "ft_md5.h"
-# include "ft_sha256.h"
 # include "ft_sha224.h"
+# include "ft_sha256.h"
+# include "ft_sha384.h"
 # include "ft_sha512.h"
 
-# define ALGO_QTY 4
+# define ALGO_QTY 5
 
 # define DIGEST 1
 
