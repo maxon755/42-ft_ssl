@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:38:58 by maks              #+#    #+#             */
-/*   Updated: 2019/08/13 17:33:00 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/13 17:45:19 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,7 @@ void	sha512_finish(
 	unsigned int	padding_size;
 	unsigned char	bits[SHA512_BYTES_FOR_SIZE];
 
-	bits[0] = (uint8_t)(context->source_size_bits >> 120);
-	bits[1] = (uint8_t)(context->source_size_bits >> 112);
-	bits[2] = (uint8_t)(context->source_size_bits >> 104);
-	bits[3] = (uint8_t)(context->source_size_bits >> 96);
-	bits[4] = (uint8_t)(context->source_size_bits >> 88);
-	bits[5] = (uint8_t)(context->source_size_bits >> 80);
-	bits[6] = (uint8_t)(context->source_size_bits >> 72);
-	bits[7] = (uint8_t)(context->source_size_bits >> 64);
-	bits[8] = (uint8_t)(context->source_size_bits >> 56);
-	bits[9] = (uint8_t)(context->source_size_bits >> 48);
-	bits[10] = (uint8_t)(context->source_size_bits >> 40);
-	bits[11] = (uint8_t)(context->source_size_bits >> 32);
-	bits[12] = (uint8_t)(context->source_size_bits >> 24);
-	bits[13] = (uint8_t)(context->source_size_bits >> 16);
-	bits[14] = (uint8_t)(context->source_size_bits >> 8);
-	bits[15] = (uint8_t)(context->source_size_bits);
+	ft_memcpy_rev(bits, &context->source_size_bits, SHA512_BYTES_FOR_SIZE);
 	index = FT_TO_BYTES(context->source_size_bits) % SHA512_BLOCK_SIZE;
 	padding_size = index < 112 ? 112 - index : 128 - index;
 	sha512_update(context, g_sha512_padding, padding_size);

@@ -65,7 +65,8 @@ ut.assertOutputWithString(ft_ssl,
 	'be sure to handle edge cases carefully\n' +
 	'ef9241f878a1da676104a81239792a2817bc0390a427ca20bad1a59030fd20c2\n' +
 	'SHA256 (tests/test_file) = f9eb9a5a063eb386a18525c074e1065c316ec434f911e0d7d59ba2d9fd134705\n',
-	' -p ' + test_file, 'echo "be sure to handle edge cases carefully"')
+	' -p ' + test_file, 'echo "be sure to handle edge cases carefully"'
+)
 ut.assertOutputWithString(ft_ssl,
 	'SHA256 (tests/test_file) = f9eb9a5a063eb386a18525c074e1065c316ec434f911e0d7d59ba2d9fd134705\n',
 	test_file,
@@ -75,7 +76,8 @@ ut.assertOutputWithString(ft_ssl,
 	'but eventually you will understand\n' +
 	'43da940057fd3b7453ee91b3a056a41343e6f0bce315570ed27e06c993a539da\n' +
 	'f9eb9a5a063eb386a18525c074e1065c316ec434f911e0d7d59ba2d9fd134705 tests/test_file\n',
-	'-p -r ' + test_file,  'echo "but eventually you will understand"')
+	'-p -r ' + test_file,  'echo "but eventually you will understand"'
+)
 
 ut.assertOutputWithString(ft_ssl,
 	'GL HF let\'s go\n' +
@@ -100,4 +102,5 @@ ut.assertOutputWithString(ft_ssl,
 	'41c3da28172faf72bb777d6a428b6d801427d02513c56cd9e3672f44383f8eee\n' +
 	'2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae\n' +
 	'f9eb9a5a063eb386a18525c074e1065c316ec434f911e0d7d59ba2d9fd134705\n',
-	'-r -q -p -s "foo" ' + test_file, 'echo "just to be extra clear"')
+	'-r -q -p -s "foo" ' + test_file, 'echo "just to be extra clear"'
+)

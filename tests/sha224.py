@@ -76,7 +76,8 @@ ut.assertOutputWithString(ft_ssl,
 	'but eventually you will understand\n' +
 	'612ba055b3238f7b04113778d77884cba7e362369516f78e5c1497c0\n' +
 	'4071b20c13752233693d28cc51a4056772aa745d8032b0c3bcb82faf tests/test_file\n',
-	'-p -r ' + test_file,  'echo "but eventually you will understand"')
+	'-p -r ' + test_file,  'echo "but eventually you will understand"'
+)
 
 ut.assertOutputWithString(ft_ssl,
 	'GL HF let\'s go\n' +
@@ -101,4 +102,5 @@ ut.assertOutputWithString(ft_ssl,
 	'00e44d133c4c26ca5aa52342d5238301641ce99d2850cf6fd3bc9918\n' +
 	'0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db\n' +
 	'4071b20c13752233693d28cc51a4056772aa745d8032b0c3bcb82faf\n',
-	'-r -q -p -s "foo" ' + test_file, 'echo "just to be extra clear"')
+	'-r -q -p -s "foo" ' + test_file, 'echo "just to be extra clear"'
+)
