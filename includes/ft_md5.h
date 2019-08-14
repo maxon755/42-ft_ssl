@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:25:50 by maks              #+#    #+#             */
-/*   Updated: 2019/08/12 17:41:24 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:09:13 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ void				md5_transform(uint32_t state[4], unsigned char *block);
 void				md5_print(
 						unsigned char digest[MD5_DIGEST_SIZE],
 						char *source,
-						ft_bool is_file);
+						t_bool is_file);
 void				md5_print_digest(unsigned char digest[MD5_DIGEST_SIZE]);
 #endif

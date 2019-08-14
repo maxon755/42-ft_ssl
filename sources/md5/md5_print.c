@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:40:28 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/12 18:13:20 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:09:24 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	md5_print_digest(unsigned char digest[MD5_DIGEST_SIZE])
 void	md5_print(
 	unsigned char digest[MD5_DIGEST_SIZE],
 	char *source,
-	ft_bool is_file)
+	t_bool is_file)
 {
 	if (!g_md5_flags.q && !g_md5_flags.r)
 	{

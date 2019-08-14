@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 14:47:15 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/14 10:59:18 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:07:51 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int			main(int argc, char *const *argv)
 {
 	t_hash_func func;
 
+	if (argc == 1)
+	{
+		print_usage();
+		return (1);
+	}
 	func = dispatch(argv[1]);
 	if (!func)
 	{

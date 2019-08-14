@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:26:44 by maks              #+#    #+#             */
-/*   Updated: 2019/08/14 11:01:32 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:08:40 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_hash_algo
 extern const	t_hash_algo g_algo_list[ALGO_QTY];
 
 void			print_error_message(char *wrong_name);
-void			print_help_message();
+void			print_help_message(void);
+void			print_usage(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 14:41:22 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/13 12:51:39 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:07:06 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 void		print_error_message(char *wrong_name)
 {
 	ft_printf("ft_ssl: Error: %s is an invalid command.\n", wrong_name);
+}
+
+void		print_usage(void)
+{
+	ft_printf("usage: ft_ssl command [command opts] [command args]\n");
 }
 
 void		print_help_message(void)

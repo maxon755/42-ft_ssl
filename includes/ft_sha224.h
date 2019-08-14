@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:45:18 by maks              #+#    #+#             */
-/*   Updated: 2019/08/13 12:37:10 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:09:13 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void				sha224_transform(
 void				sha224_print(
 						unsigned char digest[SHA224_DIGEST_SIZE],
 						char *source,
-						ft_bool is_file);
+						t_bool is_file);
 void				sha224_print_digest(
 						unsigned char digest[SHA224_DIGEST_SIZE]);
 

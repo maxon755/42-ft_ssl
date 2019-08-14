@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:40:28 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/14 11:03:29 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:09:24 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	sha384_print_digest(unsigned char digest[SHA384_DIGEST_SIZE])
 void	sha384_print(
 	unsigned char digest[SHA384_DIGEST_SIZE],
 	char *source,
-	ft_bool is_file)
+	t_bool is_file)
 {
 	if (!g_sha384_flags.q && !g_sha384_flags.r)
 	{

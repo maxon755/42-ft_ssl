@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:40:28 by mgayduk           #+#    #+#             */
-/*   Updated: 2019/08/13 11:21:34 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:09:24 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sha256_print_digest(unsigned char digest[SHA256_DIGEST_SIZE])
 void	sha256_print(
 	unsigned char digest[SHA256_DIGEST_SIZE],
 	char *source,
-	ft_bool is_file)
+	t_bool is_file)
 {
 	if (!g_sha256_flags.q && !g_sha256_flags.r)
 	{
