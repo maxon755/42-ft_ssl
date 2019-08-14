@@ -2,8 +2,8 @@
 NAME = ft_ssl
 
 # Compiler
-CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -g
+CC				= gcc
+override FLAGS	+= -Wall -Wextra -Werror -pipe
 
 ALGOS = md5 sha224 sha256 sha384 sha512
 

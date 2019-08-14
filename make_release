@@ -1,0 +1,1 @@
+make FLAGS="-O3 -fomit-frame-pointer"
