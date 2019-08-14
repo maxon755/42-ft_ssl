@@ -6,7 +6,7 @@
 /*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 13:45:18 by maks              #+#    #+#             */
-/*   Updated: 2019/08/14 16:09:13 by maks             ###   ########.fr       */
+/*   Updated: 2019/08/14 16:17:22 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define SHA384_G (temp_state[6])
 # define SHA384_H (temp_state[7])
 
-typedef uint64_t t_sha384_word;
+typedef uint64_t	t_sha384_word;
 
 typedef struct		s_sha384_flags
 {
