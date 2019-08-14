@@ -8,6 +8,26 @@ ft_ssl = './ft_ssl md5'
 open_ssl = 'md5'
 test_file = 'tests/test_file'
 
+# Common
+ut.assertOutputWithString(
+	ft_ssl,
+	'usage: md5 [-pqrh] [-s string] [files ...]\n' +
+	'       use -h for help\n',
+	'-x',
+)
+ut.assertOutputWithString(
+	ft_ssl,
+'''Message Digest 5
+usage: md5 [-pqrh] [-s string] [files ...]
+  -p, echo STDIN to STDOUT and append the checksum to STDOUT
+  -q, quiet mode
+  -r, reverse the format of the output
+  -s, print the sum of the given string
+  -h, help
+''',
+	'-h',
+)
+
 # Flag -s
 ut.assertOutput(ft_ssl, open_ssl, '-s ""')
 ut.assertOutput(ft_ssl, open_ssl, '-s "a"')
