@@ -39,7 +39,7 @@ void		sha224_hash_stdin(void)
 
 	input = NULL;
 	sha224_init(&context);
-	while ((byte_readed = read(STDIN_FILENO, buffer, SHA224_FILE_BUFFER)) > 0)
+	while ((byte_readed = read(STDIN_FILENO, buffer, SHA224_BLOCK_SIZE)) > 0)
 	{
 		sha224_update(&context, buffer, byte_readed);
 		if (g_sha224_flags.p)

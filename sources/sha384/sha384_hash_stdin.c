@@ -39,7 +39,7 @@ void		sha384_hash_stdin(void)
 
 	input = NULL;
 	sha384_init(&context);
-	while ((byte_readed = read(STDIN_FILENO, buffer, SHA384_FILE_BUFFER)) > 0)
+	while ((byte_readed = read(STDIN_FILENO, buffer, SHA384_BLOCK_SIZE)) > 0)
 	{
 		sha384_update(&context, buffer, byte_readed);
 		if (g_sha384_flags.p)

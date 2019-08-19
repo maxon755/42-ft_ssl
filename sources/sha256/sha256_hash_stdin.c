@@ -39,7 +39,7 @@ void		sha256_hash_stdin(void)
 
 	input = NULL;
 	sha256_init(&context);
-	while ((byte_readed = read(STDIN_FILENO, buffer, SHA256_FILE_BUFFER)) > 0)
+	while ((byte_readed = read(STDIN_FILENO, buffer, SHA256_BLOCK_SIZE)) > 0)
 	{
 		sha256_update(&context, buffer, byte_readed);
 		if (g_sha256_flags.p)

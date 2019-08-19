@@ -39,7 +39,7 @@ void		sha512_hash_stdin(void)
 
 	input = NULL;
 	sha512_init(&context);
-	while ((byte_readed = read(STDIN_FILENO, buffer, SHA512_FILE_BUFFER)) > 0)
+	while ((byte_readed = read(STDIN_FILENO, buffer, SHA512_BLOCK_SIZE)) > 0)
 	{
 		sha512_update(&context, buffer, byte_readed);
 		if (g_sha512_flags.p)

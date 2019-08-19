@@ -39,7 +39,7 @@ void		md5_hash_stdin(void)
 
 	input = NULL;
 	md5_init(&context);
-	while ((byte_readed = read(STDIN_FILENO, buffer, MD5_FILE_BUFFER)) > 0)
+	while ((byte_readed = read(STDIN_FILENO, buffer, MD5_BLOCK_SIZE)) > 0)
 	{
 		md5_update(&context, buffer, byte_readed);
 		if (g_md5_flags.p)
